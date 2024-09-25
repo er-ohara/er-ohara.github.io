@@ -1,8 +1,40 @@
-<html>
-  <head>
-    <title>sample</title>
-  </head>
-  <body>
-    <h1>sample</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Code and Date in Cookie</title>
+</head>
+<body>
+  <h1>Welcome to GitHub Pages</h1>
+
+  <script>
+    // クエリパラメータ取得
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // クッキーに設定
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    // "code" のクエリパラメータ取得
+    const code = getQueryParam('code');
+
+    if (code) {
+      // code" のクエリパラメータとアクセス日時をCookieに設定（有効期限7日）
+      const now = new Date().toISOString();
+      setCookie('code', code, 7);
+      setCookie('access_time', now, 7);
+      console.log('Cookie set: code=' + code + ', access_time=' + now);
+    } else {
+      console.log('No "code" parameter in URL.');
+    }
+  </script>
+</body>
 </html>
