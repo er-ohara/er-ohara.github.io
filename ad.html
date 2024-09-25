@@ -6,6 +6,18 @@
 </head>
 <body>
 
-<h1>AD PAGE</h1>
+<!-- 広告の表示 -->
+<div id="ad-container">
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <div id="gpt-ad" style="display: none;">
+        <script>
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/21356521/test-abe-ad-unit', [240, 120], 'gpt-ad').addService(googletag.pubads());
+                googletag.enableServices();
+                googletag.display('gpt-ad');
+            });
+        </script>
+    </div>
+</div>
 
 </body>
